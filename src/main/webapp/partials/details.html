@@ -1,0 +1,205 @@
+ <!-- Standard HTML form, with the submit function bound to the register() function defined in the the controller -->
+    
+    <h4>{{otrItem.filename}}</h4>
+    <h5>Series: {{otrItem.seriesName}} Title: {{otrItem.episodeName}} Episode: {{otrItem.episodeNumber}} Broadcast: {{otrItem.broadcastDate}}</h5>
+    <div  id="otrPlayerDiv" >
+    
+	</div>
+	<BR>
+	<legend>Recording information:</legend>
+    <form id="reg" ng-submit="register()">
+       
+      
+           <table  class="simpletablestyle"> 
+            <tbody>
+             <tr > 
+            <td>
+                <label align="left" for="filename">File Name:</label>
+               
+            </td>
+            <td>
+                <label align="left" for="seriesId">Series Name:</label>
+               
+            </td>
+            </tr>
+            <tr > 
+            <td>
+                
+                <input type="text" name="filename" id="filename" size="50" ng-model="otrItem.filename"  required autofocus/>
+                <span class="error" ng-show="errors.filename">{{errors.filename}}</span>
+            </td>
+            <td>
+                
+                <input type="text" name="seriesId" id="seriesId" size="50" ng-model="otrItem.seriesName"/>
+                <span class="error" ng-show="errors.seriesName">{{errors.seriesName}}</span>
+            </td>
+            </tr>
+            
+            <tr>
+            <td>
+                <label align="left" for="episodeId">Episode Name:</label>
+                <input type="text" name="episodeId" id="episodeId" size="50" ng-model="otrItem.episodeName"/>
+                <span class="error" ng-show="errors.episodeName">{{errors.episodeName}}</span>
+            </td>
+            <td>
+                <label align="left" for="description">Description:</label>
+                <input type="text" name="description" id="description" size="50" ng-model="otrItem.description"/>
+                <span class="error" ng-show="errors.description">{{errors.description}}</span>
+            </td>
+            </tr>
+            
+            <tr>
+            <td>
+                <label align="left" for="title">Title:</label>
+                <input type="text" name="title" id="title" size="50" ng-model="otrItem.title"/>
+                <span class="error" ng-show="errors.title">{{errors.title}}</span>
+            </td>
+            <td>
+                <label align="left" for="genre">Genre:</label>
+                <input type="text" name="genre" id="genre" size="50" ng-model="otrItem.genre"/>
+                <span class="error" ng-show="errors.genre">{{errors.genre}}</span>
+            </td>
+            </tr>
+            
+            
+            <tr>
+            <td>
+                <label align="left" for="trackNo">Track No:</label>
+                <input type="text" name="trackNo" id="trackNo" size="50" ng-model="otrItem.trackNo"/>
+                <span class="error" ng-show="errors.trackNo">{{errors.trackNo}}</span>
+            </td>
+            <td>
+                <label align="left" for="year">Year:</label>
+                <input type="text" name="year" id="year" size="50" ng-model="otrItem.year"/>
+                <span class="error" ng-show="errors.year">{{errors.year}}</span>
+            </td>
+            </tr>
+
+			<tr>
+			<td>
+                <label align="left" for="album">Album:</label>
+                <input type="text" name="album" id="album" size="50" ng-model="otrItem.album"/>
+                <span class="error" ng-show="errors.album">{{errors.album}}</span>
+            </td>
+            <td>
+                <label align="left" for="artist">Artist:</label>
+                <input type="text" name="artist" id="artist" size="50" ng-model="otrItem.artist"/>
+                <span class="error" ng-show="errors.artist">{{errors.artist}}</span>
+            </td>
+            </tr>
+         	<tr rowspan="4">
+         	<td colspan="2">
+                <label align="left" for="comment">Comment:</label>
+                <input type="text" name="comment" id="comment" size="110" ng-model="otrItem.comment"/>
+                <span class="error" ng-show="errors.comment">{{errors.comment}}</span>
+            </td>
+            </tr>
+            
+            
+			</tbody>
+
+           <tfooter>
+            <!-- We output a list of success messages (appropriately styled!) for the form. -->
+            <ul ng-hide="!successMessages" class="success">
+                <li ng-repeat="message in successMessages">{{message}}</li>
+            </ul>
+
+            <!-- Output the list of error messages if any. -->
+            <ul ng-hide="!errorMessages" class="error">
+                <li ng-repeat="message in errorMessages">{{message}}</li>
+            </ul>
+
+		 </tfooter>
+
+            <!-- There are two buttons, the default submit action (which is bound for the whole form), and a reset button, that clears the form. -->
+          
+            
+        </table>
+        <BR>
+             <table  class="simpletablestyle">
+         <thead>
+            <tr>
+                <th>Source Id</th>
+				<th>Rating</th>
+				<th>Heard</th>
+ 				<th>Audio Quality</th>
+  				<th>Encoding Quality</th>
+  				<th>Media Id</th>
+                <th>Indexed</th>
+            </tr>
+        </thead>
+        <tr>
+            <td><input type="text" name="sourceId"  size="1" ng-model="otrItem.sourceId"/></td>
+ 			<td><input type="text" name="rating"  size="1" ng-model="otrItem.rating"/></td>
+  			<td><input type="text" name="heard"  size="1" ng-model="otrItem.heard"/></td>
+  			<td><input type="text" name="audioQuality"  size="1" ng-model="otrItem.audioQuality"/></td>
+       		<td><input type="text" name="encodingQuality"  size="1" ng-model="otrItem.encodingQuality"/></td>       
+       		<td><input type="text" name="mediaId"  size="1" ng-model="otrItem.mediaId"/></td>
+            <td><input type="text" name="indexed"  size="1" ng-model="otrItem.indexed"/></td>
+         </tr>
+      </table>
+      <BR>
+      <BR>
+      <div>
+                <input type="submit" id="update" value="Update" />
+                <input type="button" ng-click="deleteItem()" name="delete"
+                    id="delete" value="Delete" />
+                <input type="button" ng-click="load()" name="cancel"
+                    id="cancel" value="Cancel" />
+            </div>
+        </form>
+         <table  class="simpletablestyle">
+         <thead>
+            <tr>
+                <th>Directory</th>
+                <th>Type</th>
+                <th>Audio File</th>
+                <th>Bit Rate</th>
+                <th>Sampling Rate</th>
+                <th>Channels</th>
+                <th>Encoding Type</th>
+				<th>Encoding Info</th>
+				<th>VBR</th>
+                <th>Duration</th>
+                <th>Precise Duration</th>
+                <th>File Length</th>
+               
+            </tr>
+        </thead>
+        <tr>
+      
+            <td>{{otrItem.directory}}</a>
+            <td>{{otrItem.fileType}}</td>
+            <td>{{otrItem.audioFile}}</td>
+            <td>{{otrItem.bitrate}}</td>
+            <td>{{otrItem.audioSamplingRate}}</td>
+            <td>{{otrItem.audioChannels}}</td>
+            <td>{{otrItem.encodingType}}</td>
+            <td>{{otrItem.extraEncodeInfo}}</td>
+            <td>{{otrItem.variableBitrate}}</td>
+            <td>{{otrItem.duration}}</td>
+            <td>{{otrItem.preciseDuration}}</td>
+            <td>{{otrItem.fileLength}}</td>
+            </tr>
+    </table>
+    
+    <BR>
+    <H2>Raw Data Links</H2>
+     <table  class="simpletablestyle">
+         <thead>
+            <tr>
+                <th>Id</th>
+                <th>Series Id</th>
+                <th>Episode Id</th>
+
+          
+            </tr>
+        </thead>
+        <tr>
+            <td><a href="/otr-audio-data/rest/get/{{otrItem.id}}" target="_blank">{{otrItem.id}}</a></td>
+            <td><a href="/otr-series-data/rest/get/{{otrItem.seriesId}}" target="_blank">{{otrItem.seriesId}}</a></td>
+            <td><a href="/otr-episode-data/rest/get/{{otrItem.episodeId}}" target="_blank">{{otrItem.episodeId}}</a></td>
+            
+        </tr>
+    </table>
+			

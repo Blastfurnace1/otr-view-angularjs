@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    JBoss, Home of Professional Open Source
+    Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual
+    contributors by the @authors tag. See the copyright.txt in the
+    distribution for a full listing of individual contributors.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+   
+    <artifactId>otr-view-angularjs</artifactId>
+    <groupId>org.jboss</groupId>
+    <packaging>war</packaging>
+     <version>1</version>
+    <name>WildFly AngularJS</name>
+    <description>using AngularJS for the view </description>
+
+    <properties>
+        <deploy.dir>C:/wildfly-12.0.0.Final/standalone/deployments/</deploy.dir>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- A base list of dependency and plugin version used in the various quick starts. -->
+
+        <!-- JBoss dependency versions -->
+        <version.wildfly>8.0.0.CR1</version.wildfly>
+        <!-- Alternatively, comment out the above line, and un-comment the
+            line below to use version 7.2.0.Final-redhat-1 which is a release certified 
+            to work with JBoss EAP 6. It requires you have access to the JBoss EAP 6 
+            maven repository. -->
+        <!-- <version.jboss.as>7.2.0.Final-redhat-1</version.jboss.as> -->
+
+        <version.wildfly.maven.plugin>1.0.0.Beta1</version.wildfly.maven.plugin>
+
+        <version.arquillian.container>8.0.0.CR1</version.arquillian.container>
+
+        <!-- Define the version of the JBoss BOMs we want to import to specify tested stacks. -->
+        <version.jboss.bom>1.0.5.Final</version.jboss.bom>
+        <!-- Alternatively, comment out the above line, and un-comment the 
+            line below to use version 1.0.4.Final-redhat-3 which is a release certified 
+            to work with JBoss EAP 6. It requires you have access to the JBoss EAP 6 
+            maven repository. -->
+        <!-- <version.jboss.bom>1.0.4.Final-redhat-3</version.jboss.bom> -->
+
+        <version.jboss.spec.javaee7>1.0.0.Final</version.jboss.spec.javaee7>
+        <!-- Alternatively, comment out the above line, and un-comment the 
+            line below to use version 3.0.2.Final-redhat-2 which is a release certified 
+            to work with JBoss EAP 6. It requires you have access to the JBoss EAP 6 
+            maven repository. -->
+
+        <version.org.hibernate>4.3.1.Final</version.org.hibernate>
+        <version.org.richfaces>4.3.5.Final</version.org.richfaces>
+        <version.shrinkwrap.resolver>2.0.0</version.shrinkwrap.resolver>
+        <version.junit>4.11</version.junit>
+
+        <!-- Other dependency versions -->
+        <version.org.apache.httpcomponents>4.1.4</version.org.apache.httpcomponents>
+        <version.dom4j>1.6</version.dom4j>
+        <version.javax.servlet.jstl>1.2</version.javax.servlet.jstl>
+        <version.log4j>1.2.16</version.log4j>
+        <version.org.eclipse.m2e>1.0.0</version.org.eclipse.m2e>
+        <version.org.apache.wicket>1.5.5</version.org.apache.wicket>
+        <version.net.ftlines.wicket-cdi>1.2</version.net.ftlines.wicket-cdi>
+        <version.ro.isdc.wro4j>1.4.4</version.ro.isdc.wro4j>
+        <com.ocpsoft.prettyfaces.version>3.3.2</com.ocpsoft.prettyfaces.version>
+        <org.jboss.weld.servlet.version>1.1.8.Final</org.jboss.weld.servlet.version>
+        <com.sun.faces.jsf.impl.version>2.0.2</com.sun.faces.jsf.impl.version>
+
+        <version.org.codehaus.mojo.gwt.maven.plugin>2.4.0</version.org.codehaus.mojo.gwt.maven.plugin>
+        <version.exec.plugin>1.2.1</version.exec.plugin>
+
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- JBoss distributes a complete set of Java EE 7 APIs including
+                a Bill of Materials (BOM). A BOM specifies the versions of a "stack" (or 
+                a collection) of artifacts. We use this here so that we always get the correct 
+                versions of artifacts. Here we use the jboss-javaee-6.0-with-tools stack 
+                (you can read this as the JBoss stack of the Java EE 7 APIs, with some extras
+                tools for your project, such as Arquillian for testing) and the jboss-javaee-6.0-with-hibernate 
+                stack you can read this as the JBoss stack of the Java EE 7 APIs, with extras
+                from the Hibernate family of projects) -->
+            <dependency>
+                <groupId>org.jboss.bom</groupId>
+                <artifactId>jboss-javaee-6.0-with-tools</artifactId>
+                <version>${version.jboss.bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.bom</groupId>
+                <artifactId>jboss-javaee-6.0-with-hibernate</artifactId>
+                <version>${version.jboss.bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
+    
+
+    <dependencies>
+
+       
+    </dependencies>
+    
+    <!--Custom repository:-->
+
+
+    <profiles>
+    	<profile>
+    		<id>deploy</id>
+    		<activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+            
+        
+    	<pluginManagement>
+    	<plugins>
+    	<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+        </configuration>
+    </plugin>
+    	 
+    	<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <configuration>
+                <outputDirectory>C:\wildfly-12.0.0.Final\standalone\deployments\</outputDirectory>
+         		<failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+        </plugin>
+  		
+		</plugins>
+		</pluginManagement>
+    	</build>
+       </profile> 
+    
+     
+    </profiles>
+</project>

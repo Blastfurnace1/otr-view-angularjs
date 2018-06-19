@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<div class="container">  
+            <div class="row">  
+              
+    <h1>Welcome to Old Time Radio</h1>
+    <!-- If there are no otrdata registered, instead of showing the table, we show a simple message. -->
+   <div class="table-responsive"> 
+    <table class="table table-striped table-bordered table-hover tabel-condensed">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Directory</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Bit Rate</th>
+                <th>Sampling Rate</th>
+                <th>Channels</th>
+                <th>Duration</th>
+                <th>File Length</th>
+                <th>Album</th>
+                <th>Artist</th>
+                <th>Title</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!-- The table is built using the AngularJS repeat function, iterating over the otrdata variable, and ordering by the property specified in the orderBy variable -->
+        <tr ng-repeat="otrItem in otrdata | orderBy:orderBy">
+            <td><a href="rest/otr/{{otrItem.id}}">{{otrItem.id}}</a></td>
+            <td>{{otrItem.directory}}</a>
+            <td><a href="#/details/{{otrItem.id}}">{{otrItem.filename}}</a></td>
+            <td>{{otrItem.fileType}}</td>
+            <td>{{otrItem.bitrate}}</td>
+            <td>{{otrItem.audioSamplingRate}}</td>
+            <td>{{otrItem.audioChannels}}</td>
+            <td>{{otrItem.preciseDuration}}</td>
+            <td>{{otrItem.fileLength}}</td>
+            <td>{{otrItem.artist}}</td>
+            <td>{{otrItem.album}}</td>
+            <td>{{otrItem.title}}</td>
+            <td>{{otrItem.comment}}</td>
+            </tr></tbody>
+                 <tfoot>  
+                            <tr>  
+                                <td align="center" colspan="13">  
+                                    
+                                        <a class="btn btn-primary" ng-click="loadMore()">more: {{shown}}/{{totalCount}}</a>  
+                                
+                                </td>  
+                            </tr>  
+                        </tfoot>  
+    </table></div>
+
+
+</div>
+</div>
