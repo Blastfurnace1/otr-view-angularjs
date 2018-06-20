@@ -21,12 +21,7 @@ angular.module('otrInfo', ['otrService']).config(
             $routeProvider.
             // if URL fragment is /home, then load the home partial, with the
             // MembersCtrl controller
-            when('/home', {
-                templateUrl : 'partials/home.html',
-                controller : OTRSummaryCtrl
-            // Add a default route
-            })
-            .when('/files', {
+           when('/files', {
                 templateUrl : 'partials/files.html',
                 controller : OTRSummaryCtrl
             // Add a default route
@@ -37,7 +32,7 @@ angular.module('otrInfo', ['otrService']).config(
 				controller  : OTRDetailsCTRL
 			})
             .otherwise({
-                redirectTo : '/home'
+                redirectTo : '/files'
             });
         } ]);
 
