@@ -137,16 +137,7 @@ function OTRSummaryCtrl($log, $scope, OTRAudioData, OTRAudioDataCount) {
     	return query;
     }
     
-    // when the data is retrieved from the server - load it
-    $scope.$watch('lastCount', function (newValue, oldValue, scope) {
-    	console.log($scope.lastCount);
-    	$scope.totalCount = $scope.lastCount[0].payload;
-    }, true);
-    
-    $scope.getCount = function() {
-    	$scope.lastCount = OTRAudioDataCount.query($scope.queryParams());
-    }
-    
+   
     // Define a refresh function, that updates the data from the REST service
     $scope.refresh = function() {
     	$scope.otrdataold = OTRAudioData.query($scope.queryParams());
@@ -160,14 +151,14 @@ function OTRSummaryCtrl($log, $scope, OTRAudioData, OTRAudioDataCount) {
     $scope.processRefresh = function() {
     	
     	if ($scope.addResults) {
-    		$scope.otrdata = $scope.otrdata.concat($scope.otrdataold[0].payload);
+    		$scope.otrdata = $scope.otrdata.concat($scope.otrdataold[0].payload.payload);
     		for (i=0; i < $scope.otrdata.length; i++) {
     			$scope.otrdata.selected = false;
     		}
     	} else {
-    		$scope.otrdata = $scope.otrdataold[0].payload;
+    		$scope.otrdata = $scope.otrdataold[0].payload.payload;
     	}
-    	$scope.getCount();
+    	$scope.totalCount = $scope.otrdataold[0].payload.resultsCount;
     	$scope.addResults = true;
     }
     

@@ -28,7 +28,7 @@
         <!-- The table is built using the AngularJS repeat function, iterating over the otrdata variable, and ordering by the property specified in the orderBy variable -->
         <tr ng-repeat="otrItem in otrdata | orderBy:orderBy">
             <td><a href="rest/otr/{{otrItem.id}}">{{otrItem.id}}</a></td>
-            <td>{{otrItem.directory}}</a>
+            <td>{{otrItem.directory}}</td>
             <td><a href="#/details/{{otrItem.id}}">{{otrItem.filename}}</a></td>
             <td>{{otrItem.fileType}}</td>
             <td>{{otrItem.bitrate}}</td>
@@ -45,7 +45,7 @@
                             <tr>  
                                 <td align="center" colspan="13">  
                                     
-                                        <a class="btn btn-primary" ng-click="loadMore()">more: {{shown}}/{{totalCount}}</a>  
+                                        <a ng-if="otrdata.length < totalCount" class="btn btn-primary" ng-click="loadMore()">more: {{otrdata.length}}/{{totalCount}}</a>  
                                 
                                 </td>  
                             </tr>  
